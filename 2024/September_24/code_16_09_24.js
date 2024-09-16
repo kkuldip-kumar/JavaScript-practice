@@ -1,7 +1,7 @@
 
 // shallow copy vs DeepCopy
 
-// shallow copy
+// original object
 const obj = {
     name: 'John',
     address: {
@@ -9,6 +9,8 @@ const obj = {
         building: "C block"
     }
 }
+
+// A shallow copy creates a new object or array and copies the references of the nested objects/arrays rather than duplicating them. 
 
 const shallowCopy = Object.assign({}, obj);
 // const shallowCopy = {...obj}
@@ -18,7 +20,7 @@ console.log('shallow', obj.address.city); //City B
 console.log('shallow', shallowCopy.address.city);// City B
 
 
-// deep copy is means we copy the values of the object
+// A deep copy creates a new object or array, and recursively copies all nested objects or arrays. This ensures that the original and copied structures are entirely independent of each other, so changes to nested objects in the copied structure do not affect the original structure.
 
 const deepCopy = JSON.parse(JSON.stringify(obj));
 
