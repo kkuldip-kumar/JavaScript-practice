@@ -28,3 +28,42 @@ deepCopy.address.city = 'City C';
 
 console.log(deepCopy.address.city); // City C
 console.log(obj.address.city); // City A
+
+// custom deep copy function
+
+function deepCopyFn(obj) {
+    if (obj === null || typeof obj !== 'object') {
+        // If the value is not an object or is null, return the value
+        return obj;
+    }
+
+    if (Array.isArray(obj)) {
+        // If it's an array, create a new array and deep copy each element
+        return obj.map(deepCopyFn);
+    }
+
+    // If it's an object, create a new object and deep copy each property
+    const copy = {};
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            copy[key] = deepCopyFn(obj[key]);
+        }
+    }
+
+    return copy;
+}
+
+// Example usage:
+const originalObject = {
+    name: 'John',
+    age: 30,
+    address: {
+        city: 'New York',
+        country: 'USA'
+    },
+    hobbies: ['reading', 'coding']
+};
+
+const deepCopyObject = deepCopyFn(originalObject);
+
+console.log(deepCopyObject);
