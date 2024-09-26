@@ -1,4 +1,5 @@
-// min size sub array using sliding window
+// min size sub array using sliding window 
+// leet code problem 209
 function minSizeArr(target, nums) {
     let slow = 0;
     let fast = 0;
